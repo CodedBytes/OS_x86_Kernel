@@ -1,7 +1,7 @@
 # OS_x86_Kernel
 Kernel experimental para processadores x86_64.
-Atualmente capas de se comunicar com o hardware real para exibição de graficos em 768px com driver basico VESA, driver basico de teclado.
-Vale lembrar que esse kernel é basico, focado em bare-metal e implementa boot, grub e algumas outras coisas de forma basica, sendo necesário ajustes.
+Atualmente, é capas de se comunicar com o hardware real para exibição de graficos em 768px com driver basico VESA, driver basico de teclado.
+Vale lembrar que esse kernel é basico, focado em bare-metal/firmware, que implementa boot, grub e algumas outras coisas de forma basica, sendo necesário ajustes.
 
 Para as partes de comunicação com o hardware foram usadas assembly pois quis ser o mais proximo possivel do hardware, usando também C em conjunto com o assembly. 
 
