@@ -9,7 +9,7 @@ Para as partes de comunicação com o hardware foram usadas assembly pois quis s
 A instalação requer algumas dependencias que podem ser adiquiridas no .sh disponivel no repositório, mas de forma geral são esses :
 ```bash
 sudo apt install build-essential nasm gcc make git qemu-system libsdl2-dev libpci-dev gcc-multilib
-
+```
 # WIP
 - Controle de memória
 - Controle de multitarefas com round-robin / scheduler com comportamento parecido com o de consoles.
