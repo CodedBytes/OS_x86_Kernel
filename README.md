@@ -5,6 +5,11 @@ Vale lembrar que esse kernel é basico, focado em bare-metal e implementa boot, 
 
 Para as partes de comunicação com o hardware foram usadas assembly pois quis ser o amis proximo possivel do hardware, usando também C em conjunto com o assembly. 
 
+# Instalação
+A instalação requer algumas dependencias que podem ser adiquiridas no .sh disponivel no repositório, mas de forma geral são esses :
+```bash
+sudo apt install build-essential nasm gcc make git qemu-system libsdl2-dev libpci-dev gcc-multilib
+
 # WIP
 - Controle de memória
 - Controle de multitarefas com round-robin / scheduler com comportamento parecido com o de consoles.
