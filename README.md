@@ -6,9 +6,9 @@ Vale lembrar que esse kernel é basico, focado em bare-metal/firmware, que imple
 Para as partes de comunicação com o hardware foram usadas assembly pois quis ser o mais proximo possivel do hardware, usando também C em conjunto com o assembly. 
 
 # Instalação
-A instalação requer algumas dependencias que podem ser adiquiridas no .sh disponivel no repositório, mas de forma geral são esses :
+A instalação requer algumas dependencias que podem ser adiquiridas a seguir:
 ```bash
-sudo apt install build-essential nasm gcc make git qemu-system libsdl2-dev libpci-dev gcc-multilib
+sudo apt install build-essential nasm gcc make git qemu-system libsdl2-dev libpci-dev gcc-multilib grub-pc-bin mtools xorriso
 ```
 # WIP
 - Controle de memória
