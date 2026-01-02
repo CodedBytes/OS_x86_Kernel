@@ -6,36 +6,56 @@
 #include "../include/idt.h"
 #include "../include/pic.h"
 #include "../include/timer.h"
+#include "../include/scheduler.h"
+
+void task_lock(void) {
+    uint32_t local = 0;
+    while (1) {
+        local++;
+        if ((local % 100000) == 0) {
+            safe_vga_putc('S');
+        }
+    }
+}
+void task_tick(void) {
+    while (1) {
+        safe_vga_putc('O');
+        for (volatile int i = 0; i < 500000; i++);
+    }
+}
+
 
 void kernel_main(void) {
     vga_clear();
 
-    log_info("Kernel iniciado");
-    log_info("Infraestrutura basica OK");
+    safe_vga_putc("Kernel iniciado");
+    safe_vga_putc("Infraestrutura basica OK");
     log_warn("Teste de aviso");
     log_error("Teste de erro");
 
-    //log_info("CPU abstraida");
-    //cpu_cli();
-    //log_info("CLI OK");
-    //cpu_sti();
-    //log_info("STI OK");
+    //safe_vga_putc("CPU abstraida");
+    cpu_cli();
+    safe_vga_putc("CLI OK");
     // EStas nao podem ser chamdas agora pois vai dar triple fault
 
-    log_info("GDT");
+    safe_vga_putc("GDT");
     gdt_load();
 
-    log_info("IDT");
+    safe_vga_putc("IDT");
     idt_init();
 
-    log_info("Remap PIC");
+    safe_vga_putc("Remap PIC");
     pic_remap(32, 40);
 
-    log_info("Init PIT");
+    safe_vga_putc("Init PIT");
     pit_init(100);
 
-    log_info("Enable IRQ");
+    scheduler_init();
+    scheduler_add(task_lock);
+    scheduler_add(task_tick);
+
     cpu_sti();
+    safe_vga_putc("STI OK");
 
     while (1) {
         cpu_halt();

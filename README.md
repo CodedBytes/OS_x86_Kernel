@@ -8,9 +8,9 @@ Para as partes de comunicação com o hardware foram usadas assembly pois quis s
 
 # Braches
 Sobre as branches, eu vou trabalhar com 3 branches aqui (firmware de 64bits ainda vou alinha com o tempo, junto da x86_64 tbm):
-- Uma branch para 32bits
-- Uma branch para 64bits
-- Uma branch para firmware 32bits
+- Uma branch para 32bits (Main)
+- Uma branch para 64bits (x86_64)
+- Uma branch para firmware 32bits (firmware_x86)
 
 # Instalação
 A instalação requer algumas dependencias que podem ser adiquiridas a seguir:

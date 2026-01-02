@@ -1,7 +1,7 @@
 #include "../../include/types.h"
 
 extern void* isr_stub_table[];
-extern void irq0_handler(void);
+extern void irq0_stub(void);
 
 struct idt_entry {
     u16 offset_low;
@@ -21,9 +21,9 @@ static struct idt_ptr idt_descriptor;
 
 static void idt_set_gate(int n, u32 handler) {
     idt[n].offset_low  = handler & 0xFFFF;
-    idt[n].selector    = 0x08; // code segment
+    idt[n].selector    = 0x08;   // kernel code segment
     idt[n].zero        = 0;
-    idt[n].type_attr   = 0x8E; // present, ring 0, interrupt gate
+    idt[n].type_attr   = 0x8E;   // present | ring 0 | interrupt gate
     idt[n].offset_high = (handler >> 16) & 0xFFFF;
 }
 
@@ -32,7 +32,7 @@ void idt_init(void) {
         idt_set_gate(i, (u32)isr_stub_table[i]);
     }
 
-    idt_set_gate(32, (u32)irq0_handler);
+    idt_set_gate(32, (u32)irq0_stub);
 
     idt_descriptor.limit = sizeof(idt) - 1;
     idt_descriptor.base  = (u32)&idt;

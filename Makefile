@@ -1,7 +1,7 @@
 CC = x86_64-linux-gnu-gcc
 AS = nasm
-CFLAGS = -ffreestanding -O2 -Wall -Wextra -m32 -fno-pic -fno-pie -fno-stack-protector -fno-asynchronous-unwind-tables
-LDFLAGS = -T linker.ld -nostdlib -m32
+CFLAGS = -ffreestanding -O2 -Wall -Wextra -m32 -fno-pic -fno-pie -fno-stack-protector -fno-asynchronous-unwind-tables 
+LDFLAGS = -T linker.ld -nostdlib -no-pie -m32
 
 OBJS = \
     arch/x86/boot.o \
@@ -10,12 +10,15 @@ OBJS = \
     arch/x86/idt.o \
     arch/x86/idt_stubs.o \
     arch/x86/irq.o \
+    arch/x86/irq_asm.o \
+    arch/x86/context_switch.o \
     arch/x86/pic.o \
     core/kernel.o \
     core/log.o \
     core/panic.o \
     drivers/vga.o \
-    drivers/timer.o
+    drivers/timer.o \
+    sched/scheduler.o
 
 ISO_DIR = iso
 BOOT_DIR = $(ISO_DIR)/boot
@@ -42,4 +45,4 @@ run: kernel.iso
 	qemu-system-x86_64 -cdrom kernel.iso -vga vmware
 
 clean:
-	rm -rf $(OBJS) kernel.bin kernel.iso 
+	rm -rf $(OBJS) kernel.bin kernel.iso
