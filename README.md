@@ -21,8 +21,11 @@ Para todas as branches isso é necessario.
 
 # WIP
 - Controle de memória
+- Heaps
+- Modo gráfico
+- Teclado e outros drivers mais simples.
 - Controle de multitarefas com round-robin / scheduler com comportamento parecido com o de consoles.
 - Controle de de tarefas usando semaforos (talvez eu troque isso).
 
 # Ideias
-Transformar isso em um MSDOS da vida ou um kernel x86 para adaptação de um OS simples futuramente.
+Transformar isso em um MSDOS da vida, um kernel x86 para adaptação de um OS simples futuramente ou firmware semelhante a de consoles, mas mantendo o foco ideal para estudos e nao conclusão de projeto para ser solto para usuário final.
